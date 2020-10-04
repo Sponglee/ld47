@@ -7,12 +7,16 @@ public class CylinderController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 pos = new Vector3(mousePos.x, mousePos.y, transform.position.z);
+        }
     }
 }

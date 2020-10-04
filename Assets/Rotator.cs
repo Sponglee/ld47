@@ -7,7 +7,7 @@ public class Rotator : MonoBehaviour
 
 
     public Vector3 targetAxis;
-    public bool Inverted = true;
+    public bool IsStage = true;
     public bool RandomRotation = true;
     public bool RandomSpeed = true;
 
@@ -25,6 +25,15 @@ public class Rotator : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(targetAxis * Time.deltaTime * speed);
+        if (IsStage)
+        {
+            if (!GetComponent<StageController>().CurrentLoop)
+                transform.Rotate(targetAxis * Time.deltaTime * speed);
+            else
+                transform.Rotate(Vector3.up * Time.deltaTime * speed);
+
+        }
+        else
+            transform.Rotate(targetAxis * Time.deltaTime * speed);
     }
 }

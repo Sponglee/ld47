@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeParent()
     {
-        transform.parent = LevelController.Instance.transform.GetChild(LevelController.Instance.currentStage);
-        inverted = transform.parent.GetComponent<Rotator>().Inverted;
+        transform.parent = LevelController.Instance.transform.GetChild(LevelController.Instance.currentStageIndex);
+        // inverted = transform.parent.GetComponent<Rotator>().IsStage;
     }
     void Update()
     {
