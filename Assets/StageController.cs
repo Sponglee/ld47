@@ -43,18 +43,35 @@ public class StageController : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             float rotX = Input.GetAxis("Mouse X") * rotateSpeed;
 
-            float rotY = Input.GetAxis("Mouse Y") * rotateSpeed;
+            // float rotY = Input.GetAxis("Mouse Y") * rotateSpeed;
 
-            if ()
+            if (transform.localEulerAngles.x - 90f < 5f)
+            {
+                // rotX = 0f;
+                transform.Rotate(Vector3.forward, rotX);
+                transform.localRotation = Quaternion.Euler(90f, transform.localEulerAngles.y, transform.localEulerAngles.z);
 
 
-                if (Mathf.Abs(Vector3.Dot((LevelController.Instance.cylinder.position - transform.position).normalized, transform.right) - 1f) < 0.01f)
+
+                if (Mathf.Abs(Vector3.Dot((LevelController.Instance.cylinder.position - transform.position).normalized, transform.up) - 1f) < 0.01f)
                 {
-                    Debug.Log(Vector3.Dot((LevelController.Instance.cylinder.position - transform.position).normalized, transform.right));
                     LevelController.Instance.StageComplete(this);
                 }
 
+
+                rotX = 0f;
+            }
+
+
+
+
+
+
+
             transform.Rotate(Vector3.up, rotX);
+
+
+
 
 
             // transform.localRotation = Quaternion.Euler(transform.localEulerAngles.x + rotX, transform.localEulerAngles.y/*+ rotX*/, transform.localEulerAngles.z /*+ rotY*/);
